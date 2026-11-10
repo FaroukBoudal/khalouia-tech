@@ -44,17 +44,22 @@ Each key is the exact English sentence shown on the page.
 
 ## Contact form
 
-The form delivers messages straight to **faroukboudali07@gmail.com** through
-[FormSubmit](https://formsubmit.co) — no account or server needed.
+The form sends each request straight to **Telegram** (bot `@KhalouiaTechBot`).
+Messages appear instantly in the owner's chat — no email or server involved.
 
-**First-time activation:** the first submission triggers a confirmation email from
-FormSubmit. Open it and click the activation link once; after that, every message
-arrives in the inbox automatically.
+Configuration lives near the bottom of `index.html`:
 
-If you ever change the address, replace it in two places:
+```js
+const TELEGRAM_BOT_TOKEN = '...';
+const TELEGRAM_CHAT_ID = '...';
+```
 
-1. The form `action` URL and the `fetch(...)` URL in `index.html`
-2. The displayed `id="emailText"` value
+To change the recipient, message the bot from the new Telegram account, open
+`https://api.telegram.org/bot<TOKEN>/getUpdates`, and copy the new `chat.id`.
+
+**Security note:** the bot token is visible in the page source because GitHub Pages is
+static. If abuse becomes a problem, regenerate the token with @BotFather or move the
+call behind a small Cloudflare Worker proxy.
 
 ## Custom domain
 
