@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" dir="ltr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,7 +41,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -66,6 +66,39 @@
             background: linear-gradient(#111827, #111827) padding-box,
                         linear-gradient(135deg, #06b6d4, #1e40af) border-box;
             border: 1px solid transparent;
+        }
+        /* Arabic / RTL support */
+        [dir="rtl"] body {
+            font-family: 'Cairo', 'Inter', sans-serif;
+        }
+        [dir="rtl"] .tracking-widest,
+        [dir="rtl"] .tracking-wider,
+        [dir="rtl"] .tracking-tight {
+            letter-spacing: 0 !important;
+        }
+        [dir="rtl"] .space-x-8 > :not([hidden]) ~ :not([hidden]) {
+            margin-left: 0;
+            margin-right: 2rem;
+        }
+        [dir="rtl"] .space-x-2 > :not([hidden]) ~ :not([hidden]) {
+            margin-left: 0;
+            margin-right: 0.5rem;
+        }
+        [dir="rtl"] .mr-2 {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+        [dir="rtl"] .fa-arrow-right {
+            transform: rotate(180deg);
+        }
+        .lang-btn {
+            min-width: 2rem;
+        }
+        /* Keep prices/amounts left-to-right inside the Arabic layout */
+        [dir="rtl"] #calculator .text-brand-400,
+        [dir="rtl"] #calcTotal {
+            direction: ltr;
+            unicode-bidi: isolate;
         }
     </style>
 </head>
@@ -96,6 +129,14 @@
                     <a href="#calculator" class="text-sm font-medium text-gray-300 hover:text-brand-400 transition-colors">Estimate Project</a>
                     <a href="#contact" class="px-5 py-2.5 rounded-lg text-sm font-semibold bg-brand-500 text-darkBg hover:bg-brand-400 transition-all shadow-md shadow-brand-500/20">Contact Us</a>
                 </nav>
+
+                <!-- Language Switcher -->
+                <div class="flex items-center gap-1 ml-3 md:ml-6" id="langSwitcher" role="group" aria-label="Language">
+                    <i class="fa-solid fa-globe text-gray-500 text-sm mr-1 hidden sm:inline"></i>
+                    <button type="button" data-lang="en" class="lang-btn px-2 py-1 rounded-md text-[11px] font-bold text-gray-400 hover:text-white transition-colors" aria-pressed="false">EN</button>
+                    <button type="button" data-lang="fr" class="lang-btn px-2 py-1 rounded-md text-[11px] font-bold text-gray-400 hover:text-white transition-colors" aria-pressed="false">FR</button>
+                    <button type="button" data-lang="ar" class="lang-btn px-2 py-1 rounded-md text-[11px] font-bold text-gray-400 hover:text-white transition-colors" aria-pressed="false">ع</button>
+                </div>
 
                 <!-- Mobile Menu Button -->
                 <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white focus:outline-none">
@@ -255,7 +296,7 @@
                     <div>
                         <span class="text-xs font-bold uppercase tracking-widest text-brand-400">Our Technical Mindset</span>
                         <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3 leading-snug">Built on Self-Reliance, Discipline & Execution</h2>
-                        <p class="text-gray-300 mt-6 leading-relaxed">
+                        <p class="text-gray-300 mt-6 leading-relaxed" data-i18n-html="about.p1">
                             At <strong>Khalouia Tech</strong>, we believe in practical solutions over empty fluff. Founded by a Senior Database Specialist with hands-on computer engineering experience, our focus is simple: build reliable systems that solve real problems.
                         </p>
                         <p class="text-gray-400 mt-4 leading-relaxed text-sm">
@@ -275,7 +316,7 @@
                     </div>
 
                     <div class="relative">
-                        <div class="w-full h-96 rounded-2xl gradient-border p-6 flex flex-col justify-between bg-darkBg shadow-2xl overflow-hidden">
+                        <div dir="ltr" class="w-full h-96 rounded-2xl gradient-border p-6 flex flex-col justify-between bg-darkBg shadow-2xl overflow-hidden">
                             <!-- Code Editor / Terminal Mockup -->
                             <div class="flex items-center justify-between border-b border-gray-800 pb-4">
                                 <div class="flex items-center space-x-2">
@@ -601,7 +642,7 @@
             document.execCommand('copy');
             document.body.removeChild(tempInput);
             
-            alert('Email address copied to clipboard!');
+            alert(window.ktT ? window.ktT('Email address copied to clipboard!') : 'Email address copied to clipboard!');
         }
 
         // Contact Form Submission Handler
@@ -631,5 +672,6 @@
             }, 6000);
         }
     </script>
+    <script src="i18n.js"></script>
 </body>
 </html>
