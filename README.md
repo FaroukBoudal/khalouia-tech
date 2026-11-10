@@ -6,7 +6,7 @@ Single-page static site for **Khalouia Tech** (programming, databases, IT suppor
 
 | File | Purpose |
 | --- | --- |
-| `index.html` | The full site (hero, services, about, portfolio, estimator, contact) |
+| `index.html` | The full site (hero, services, about, portfolio, contact) |
 | `404.html` | Custom "page not found" page |
 | `robots.txt` | Search-engine crawling rules |
 | `.nojekyll` | Tells GitHub Pages to serve files as-is (no Jekyll build) |
