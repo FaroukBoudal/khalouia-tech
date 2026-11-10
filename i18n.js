@@ -353,13 +353,14 @@
     }
 
     function detect() {
+        // An explicit ?lang= link always wins so shared links keep their language.
+        var q = new URLSearchParams(window.location.search).get('lang');
+        if (q && META[q]) return q;
+
         try {
             var saved = localStorage.getItem('kt-lang');
             if (saved && META[saved]) return saved;
         } catch (e) { /* ignore */ }
-
-        var q = new URLSearchParams(window.location.search).get('lang');
-        if (q && META[q]) return q;
 
         var tz = '';
         try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) { /* ignore */ }
@@ -381,7 +382,13 @@
         apply(detect());
         document.querySelectorAll('.lang-btn').forEach(function (btn) {
             btn.addEventListener('click', function () {
-                apply(btn.getAttribute('data-lang'));
+                var lang = btn.getAttribute('data-lang');
+                apply(lang);
+                try {
+                    var url = new URL(window.location.href);
+                    url.searchParams.set('lang', lang);
+                    window.history.replaceState(null, '', url);
+                } catch (e) { /* ignore */ }
             });
         });
     }
