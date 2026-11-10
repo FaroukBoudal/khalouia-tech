@@ -147,6 +147,8 @@
         'Describe what you need built or fixed...': 'Décrivez ce que vous souhaitez créer ou réparer...',
         'Send Message': 'Envoyer le message',
         'Message sent successfully! We will get back to you soon.': 'Message envoyé avec succès ! Nous vous répondrons bientôt.',
+        'Sending...': 'Envoi en cours...',
+        'Something went wrong. Please try again or email us directly.': "Une erreur s'est produite. Réessayez ou écrivez-nous directement.",
         '© 2026. All rights reserved.': '© 2026. Tous droits réservés.',
         'Driven by Technical Excellence & Self-Reliance.': "Guidé par l'excellence technique et l'autonomie.",
         'Email address copied to clipboard!': 'Adresse e-mail copiée dans le presse-papiers !'
@@ -279,6 +281,8 @@
         'Describe what you need built or fixed...': 'صف ما تريد بناؤه أو إصلاحه...',
         'Send Message': 'إرسال الرسالة',
         'Message sent successfully! We will get back to you soon.': 'تم إرسال الرسالة بنجاح! سنعاود التواصل معك قريباً.',
+        'Sending...': 'جارٍ الإرسال...',
+        'Something went wrong. Please try again or email us directly.': 'حدث خطأ ما. حاول مرة أخرى أو راسلنا مباشرة.',
         '© 2026. All rights reserved.': '© 2026. جميع الحقوق محفوظة.',
         'Driven by Technical Excellence & Self-Reliance.': 'مدفوعون بالتميز التقني والاعتماد على الذات.',
         'Email address copied to clipboard!': 'تم نسخ البريد الإلكتروني!'
