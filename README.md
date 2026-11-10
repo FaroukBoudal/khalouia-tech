@@ -26,6 +26,22 @@ npx serve .
 3. Repo **Settings → Pages → Source: Deploy from a branch → Branch: `main` / root**.
 4. The site goes live at `https://<username>.github.io/khalouia-tech/`.
 
+## Languages (English / French / Arabic)
+
+The site ships with a built-in language switcher (`EN` / `FR` / `ع`) in the header.
+Arabic automatically switches the whole page to right-to-left layout and the Cairo font.
+
+On a visitor's first visit, the language is chosen in this order:
+
+1. A previously saved choice (`localStorage` key `kt-lang`)
+2. `?lang=ar`, `?lang=fr` or `?lang=en` in the URL
+3. The visitor's country, inferred from the browser timezone (Arabic-speaking countries → Arabic, French-speaking → French)
+4. The browser's preferred language
+5. English as the fallback
+
+All translations live in `i18n.js`. To change wording, edit the `FR` / `AR` objects.
+Each key is the exact English sentence shown on the page.
+
 ## Contact form
 
 GitHub Pages is static, so the form cannot send email by itself. It currently opens the
