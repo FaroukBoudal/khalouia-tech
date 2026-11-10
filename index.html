@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khalouia Tech | Smart Tech Solutions & Digital Media</title>
+    <meta name="description" content="Khalouia Tech builds custom software, database systems, local networks, and digital media for businesses in Algeria. Programming, databases, IT support, and video editing.">
+    <meta name="theme-color" content="#0b0f19">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Khalouia Tech | Smart Tech Solutions & Digital Media">
+    <meta property="og:description" content="Custom software, database systems, local networks, and digital media for businesses in Algeria.">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f19'/%3E%3Crect x='6' y='6' width='52' height='52' rx='10' fill='none' stroke='%2306b6d4' stroke-width='2'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='bold' text-anchor='middle' fill='%2306b6d4'%3EK%3C/text%3E%3C/svg%3E">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#ecfeff',
+                            100: '#cffaff',
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                            900: '#164e63',
+                        },
+                        darkBg: '#0b0f19',
+                        darkCard: '#111827',
+                        darkBorder: '#1f2937'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            color: #f3f4f6;
+        }
+        .glow-cyan {
+            box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.25);
+        }
+        .glow-cyan-lg {
+            box-shadow: 0 0 50px -10px rgba(6, 182, 212, 0.35);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 50%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-border {
+            position: relative;
+            background: linear-gradient(#111827, #111827) padding-box,
+                        linear-gradient(135deg, #06b6d4, #1e40af) border-box;
+            border: 1px solid transparent;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-darkBg/80 backdrop-blur-md border-b border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-blue-600 p-0.5 flex items-center justify-center transition-transform group-hover:scale-105">
+                        <div class="w-full h-full bg-darkBg rounded-[10px] flex items-center justify-center">
+                            <i class="fa-solid fa-microchip text-brand-400 text-lg"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold tracking-tight text-white group-hover:text-brand-400 transition-colors">Khalouia <span class="text-brand-400">Tech</span></span>
+                        <span class="block text-[10px] uppercase tracking-widest text-gray-400 font-semibold -mt-1">Dev • Systems • Media</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#services" class="text-sm font-medium text-gray-300 hover:text-brand-400 transition-colors">Services</a>
+                    <a href="#about" class="text-sm font-medium text-gray-300 hover:text-brand-400 transition-colors">About</a>
+                    <a href="#portfolio" class="text-sm font-medium text-gray-300 hover:text-brand-400 transition-colors">Portfolio</a>
+                    <a href="#calculator" class="text-sm font-medium text-gray-300 hover:text-brand-400 transition-colors">Estimate Project</a>
+                    <a href="#contact" class="px-5 py-2.5 rounded-lg text-sm font-semibold bg-brand-500 text-darkBg hover:bg-brand-400 transition-all shadow-md shadow-brand-500/20">Contact Us</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden bg-darkCard border-b border-gray-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Services</a>
+            <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">About</a>
+            <a href="#portfolio" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Portfolio</a>
+            <a href="#calculator" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">Estimate Project</a>
+            <a href="#contact" class="block text-center w-full mt-4 px-5 py-3 rounded-lg font-semibold bg-brand-500 text-darkBg">Contact Us</a>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="pt-20">
+
+        <!-- HERO SECTION -->
+        <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-20">
+            <!-- Background Glow FX -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+            <div class="absolute bottom-10 right-10 w-72 h-72 bg-blue-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-500/30 bg-brand-500/5 text-brand-400 text-xs sm:text-sm font-medium mb-8 backdrop-blur-sm">
+                    <span class="flex h-2 w-2 rounded-full bg-brand-400 animate-ping"></span>
+                    Smart Tech Solutions & Digital Media from Algeria
+                </div>
+
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight max-w-5xl mx-auto">
+                    Transforming Ideas Into <br class="hidden sm:inline"/>
+                    <span class="gradient-text">Precision Systems & Media</span>
+                </h1>
+
+                <p class="mt-6 text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto font-light leading-relaxed">
+                    Custom Stock Management, High-Performance Database Systems, PC Diagnostics & Assembly, and Viral Shorts/Reels Editing built with technical precision.
+                </p>
+
+                <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold bg-brand-500 text-darkBg hover:bg-brand-400 transition-all shadow-lg shadow-brand-500/25 flex items-center justify-center gap-2">
+                        <span>Get Started</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </a>
+                    <a href="#services" class="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold bg-darkCard border border-gray-700 text-gray-200 hover:border-brand-500/50 hover:text-brand-400 transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-layer-group text-sm"></i>
+                        <span>Explore Services</span>
+                    </a>
+                </div>
+
+                <!-- Live Metrics Bar -->
+                <div class="mt-16 pt-10 border-t border-gray-800/80 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                    <div class="p-4 rounded-xl bg-darkCard/40 border border-gray-800/50">
+                        <div class="text-3xl font-bold text-white gradient-text">100%</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Self-Reliant Tech</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-darkCard/40 border border-gray-800/50">
+                        <div class="text-3xl font-bold text-white gradient-text">Custom</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Database Apps</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-darkCard/40 border border-gray-800/50">
+                        <div class="text-3xl font-bold text-white gradient-text">Fast</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Hardware Setup</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-darkCard/40 border border-gray-800/50">
+                        <div class="text-3xl font-bold text-white gradient-text">HD 60FPS</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Media Production</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section id="services" class="py-24 bg-darkBg relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs uppercase font-bold tracking-widest text-brand-400">Core Engineering & Creation</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Comprehensive Technical Services</p>
+                    <p class="text-gray-400 mt-4 text-base">From database management tools to sleek short-form video editing, we engineer solutions tailored for growth.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Service 1 -->
+                    <div class="group p-8 rounded-2xl bg-darkCard border border-gray-800 hover:border-brand-500/40 transition-all duration-300 hover:-translate-y-1 glow-cyan">
+                        <div class="w-14 h-14 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-brand-400 transition-colors">Database & Stock Systems</h3>
+                        <p class="text-gray-400 leading-relaxed text-sm mb-6">
+                            Tailored Python & MySQL desktop software designed specifically for local shops, warehouses, and small businesses to manage stock, sales records, and inventory seamlessly.
+                        </p>
+                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-400"></i> Fast local offline data sync</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-400"></i> Receipt & inventory report generation</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-400"></i> Clean, intuitive user interface</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="group p-8 rounded-2xl bg-darkCard border border-gray-800 hover:border-brand-500/40 transition-all duration-300 hover:-translate-y-1 glow-cyan">
+                        <div class="w-14 h-14 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-brand-400 transition-colors">PC Diagnostics & Hardware</h3>
+                        <p class="text-gray-400 leading-relaxed text-sm mb-6">
+                            Professional computer troubleshooting, custom PC builds for gaming/workstations, thermal repasting, OS optimization, hardware upgrades, and server maintenance.
+                        </p>
+                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-400"></i> Deep diagnostic testing & cleanups</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-400"></i> Custom PC component picking & build</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-400"></i> OS reinstalls & driver optimizations</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="group p-8 rounded-2xl bg-darkCard border border-gray-800 hover:border-brand-500/40 transition-all duration-300 hover:-translate-y-1 glow-cyan">
+                        <div class="w-14 h-14 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-clapperboard"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-brand-400 transition-colors">Digital Media & Reels Editing</h3>
+                        <p class="text-gray-400 leading-relaxed text-sm mb-6">
+                            Engaging post-production for vertical content (TikTok, Instagram Reels, YouTube Shorts). Dynamic captions, sound design, hooks, color grading, and branding.
+                        </p>
+                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-400"></i> Fast-paced caption styling & SFX</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-400"></i> Product showcase videos for shops</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-400"></i> High conversion promo clips</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div class="group p-8 rounded-2xl bg-darkCard border border-gray-800 hover:border-brand-500/40 transition-all duration-300 hover:-translate-y-1 glow-cyan">
+                        <div class="w-14 h-14 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-brand-400 transition-colors">Local Network & Server Setup</h3>
+                        <p class="text-gray-400 leading-relaxed text-sm mb-6">
+                            Setting up fast local network infrastructures (LAN/WLAN) for offices, cyber cafes, or stores. Local server setup for shared database access without external internet dependencies.
+                        </p>
+                        <ul class="space-y-2 text-xs text-gray-300 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-400"></i> Secure multi-user database sharing</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-400"></i> Router configuration & cabling setup</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-400"></i> Automated backup routines</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT / MINDSET SECTION -->
+        <section id="about" class="py-20 bg-darkCard/60 border-y border-gray-800 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-brand-400">Our Technical Mindset</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3 leading-snug">Built on Self-Reliance, Discipline & Execution</h2>
+                        <p class="text-gray-300 mt-6 leading-relaxed">
+                            At <strong>Khalouia Tech</strong>, we believe in practical solutions over empty fluff. Founded by a Senior Database Specialist with hands-on computer engineering experience, our focus is simple: build reliable systems that solve real problems.
+                        </p>
+                        <p class="text-gray-400 mt-4 leading-relaxed text-sm">
+                            Whether it's rescuing a malfunctioning PC workstation, programming a clean database inventory app, or editing crisp short-form media to boost local business sales—we approach every task with rigorous technical precision.
+                        </p>
+
+                        <div class="mt-8 grid grid-cols-2 gap-4">
+                            <div class="p-4 rounded-xl bg-darkBg border border-gray-800">
+                                <h4 class="font-semibold text-white text-sm"><i class="fa-solid fa-code text-brand-400 mr-2"></i>Python & MySQL</h4>
+                                <p class="text-xs text-gray-400 mt-1">Robust backend logic and data structure.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-darkBg border border-gray-800">
+                                <h4 class="font-semibold text-white text-sm"><i class="fa-solid fa-video text-brand-400 mr-2"></i>Video Editing</h4>
+                                <p class="text-xs text-gray-400 mt-1">High-retention Reels & Shorts post-production.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div class="w-full h-96 rounded-2xl gradient-border p-6 flex flex-col justify-between bg-darkBg shadow-2xl overflow-hidden">
+                            <!-- Code Editor / Terminal Mockup -->
+                            <div class="flex items-center justify-between border-b border-gray-800 pb-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                </div>
+                                <span class="text-xs text-gray-500 font-mono">khalouia_core.py</span>
+                            </div>
+
+                            <div class="font-mono text-xs sm:text-sm text-gray-300 space-y-2 py-4">
+                                <p><span class="text-purple-400">class</span> <span class="text-yellow-300">KhalouiaTech</span>:</p>
+                                <p class="pl-4"><span class="text-purple-400">def</span> <span class="text-blue-400">__init__</span>(self):</p>
+                                <p class="pl-8"><span class="text-brand-400">self</span>.vision = <span class="text-green-300">"Practical Technical Independence"</span></p>
+                                <p class="pl-8"><span class="text-brand-400">self</span>.skills = [<span class="text-green-300">"SQL"</span>, <span class="text-green-300">"Python"</span>, <span class="text-green-300">"Hardware"</span>, <span class="text-green-300">"Media"</span>]</p>
+                                <p class="pl-4"><span class="text-purple-400">def</span> <span class="text-blue-400">deliver_solution</span>(self, client_need):</p>
+                                <p class="pl-8"><span class="text-purple-400">return</span> <span class="text-green-300">f"Executing {client_need} with 100% precision."</span></p>
+                            </div>
+
+                            <div class="pt-4 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400">
+                                <span>Status: <span class="text-green-400">Ready to Deploy</span></span>
+                                <span>Algeria 🇩🇿</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTFOLIO FILTERABLE SECTION -->
+        <section id="portfolio" class="py-24 bg-darkBg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs uppercase font-bold tracking-widest text-brand-400">Selected Work</h2>
+                    <p class="text-3xl font-extrabold text-white mt-2">Highlights & Capability Demos</p>
+                </div>
+
+                <!-- Tab Buttons -->
+                <div class="flex justify-center flex-wrap gap-3 mb-12" id="portfolioTabs">
+                    <button data-filter="all" class="tab-btn px-5 py-2 rounded-full text-xs font-semibold bg-brand-500 text-darkBg">All Projects</button>
+                    <button data-filter="systems" class="tab-btn px-5 py-2 rounded-full text-xs font-semibold bg-darkCard text-gray-400 border border-gray-800 hover:text-white">Desktop & Databases</button>
+                    <button data-filter="hardware" class="tab-btn px-5 py-2 rounded-full text-xs font-semibold bg-darkCard text-gray-400 border border-gray-800 hover:text-white">Hardware & PC</button>
+                    <button data-filter="media" class="tab-btn px-5 py-2 rounded-full text-xs font-semibold bg-darkCard text-gray-400 border border-gray-800 hover:text-white">Video & Media</button>
+                </div>
+
+                <!-- Portfolio Items Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="portfolioGrid">
+                    <!-- Item 1 -->
+                    <div class="portfolio-item systems bg-darkCard rounded-xl border border-gray-800 overflow-hidden hover:border-brand-500/40 transition-all">
+                        <div class="h-48 bg-gradient-to-br from-gray-900 to-gray-800 p-6 flex flex-col justify-between border-b border-gray-800 relative">
+                            <span class="text-xs px-2.5 py-1 rounded bg-brand-500/20 text-brand-400 font-mono w-fit">Python / MySQL</span>
+                            <i class="fa-solid fa-boxes-stacked text-5xl text-gray-700/40 absolute right-6 bottom-6"></i>
+                            <h4 class="text-xl font-bold text-white">Stock Management GUI</h4>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-xs text-gray-400 leading-relaxed mb-4">Custom desktop application for real-time inventory tracking, receipt printing, and daily sales reports.</p>
+                            <span class="text-xs text-brand-400 font-semibold">Custom Local Business App</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="portfolio-item hardware bg-darkCard rounded-xl border border-gray-800 overflow-hidden hover:border-brand-500/40 transition-all">
+                        <div class="h-48 bg-gradient-to-br from-gray-900 to-gray-800 p-6 flex flex-col justify-between border-b border-gray-800 relative">
+                            <span class="text-xs px-2.5 py-1 rounded bg-brand-500/20 text-brand-400 font-mono w-fit">Workstation Build</span>
+                            <i class="fa-solid fa-desktop text-5xl text-gray-700/40 absolute right-6 bottom-6"></i>
+                            <h4 class="text-xl font-bold text-white">Custom PC Assembly</h4>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-xs text-gray-400 leading-relaxed mb-4">Thermal management, cable routing, BIOS configuration, and stress testing for editing workstations.</p>
+                            <span class="text-xs text-brand-400 font-semibold">Hardware Diagnostics</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="portfolio-item media bg-darkCard rounded-xl border border-gray-800 overflow-hidden hover:border-brand-500/40 transition-all">
+                        <div class="h-48 bg-gradient-to-br from-gray-900 to-gray-800 p-6 flex flex-col justify-between border-b border-gray-800 relative">
+                            <span class="text-xs px-2.5 py-1 rounded bg-brand-500/20 text-brand-400 font-mono w-fit">Reels / Shorts</span>
+                            <i class="fa-solid fa-film text-5xl text-gray-700/40 absolute right-6 bottom-6"></i>
+                            <h4 class="text-xl font-bold text-white">Dynamic Content Editing</h4>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-xs text-gray-400 leading-relaxed mb-4">Fast-paced vertical videos with animated captions, background audio balancing, and high-retention hooks.</p>
+                            <span class="text-xs text-brand-400 font-semibold">Social Media Video</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERACTIVE SERVICE CALCULATOR SECTION -->
+        <section id="calculator" class="py-20 bg-darkCard/40 border-y border-gray-800">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10">
+                    <span class="text-xs uppercase font-bold tracking-widest text-brand-400">Quick Estimator</span>
+                    <h2 class="text-3xl font-extrabold text-white mt-2">Estimate Your Project Cost</h2>
+                    <p class="text-xs text-gray-400 mt-2">Select the services you need to calculate an instant estimated starting budget.</p>
+                </div>
+
+                <div class="bg-darkCard p-8 rounded-2xl border border-gray-800 shadow-xl">
+                    <div class="space-y-4" id="calcOptions">
+                        <label class="flex items-center justify-between p-4 rounded-xl border border-gray-800 hover:border-brand-500/40 cursor-pointer transition-all bg-darkBg/50">
+                            <div class="flex items-center gap-3">
+                                <input type="checkbox" data-price="15000" class="w-5 h-5 accent-brand-500 rounded cursor-pointer calc-checkbox">
+                                <div>
+                                    <div class="text-sm font-semibold text-white">Basic PC Maintenance / Diagnostic</div>
+                                    <div class="text-xs text-gray-400">Deep cleaning, OS reinstall, hardware testing</div>
+                                </div>
+                            </div>
+                            <span class="text-sm font-bold text-brand-400">~15,000 DZD</span>
+                        </label>
+
+                        <label class="flex items-center justify-between p-4 rounded-xl border border-gray-800 hover:border-brand-500/40 cursor-pointer transition-all bg-darkBg/50">
+                            <div class="flex items-center gap-3">
+                                <input type="checkbox" data-price="45000" class="w-5 h-5 accent-brand-500 rounded cursor-pointer calc-checkbox">
+                                <div>
+                                    <div class="text-sm font-semibold text-white">Custom Stock Management System</div>
+                                    <div class="text-xs text-gray-400">Python + MySQL desktop app tailored for shop</div>
+                                </div>
+                            </div>
+                            <span class="text-sm font-bold text-brand-400">~45,000 DZD</span>
+                        </label>
+
+                        <label class="flex items-center justify-between p-4 rounded-xl border border-gray-800 hover:border-brand-500/40 cursor-pointer transition-all bg-darkBg/50">
+                            <div class="flex items-center gap-3">
+                                <input type="checkbox" data-price="20000" class="w-5 h-5 accent-brand-500 rounded cursor-pointer calc-checkbox">
+                                <div>
+                                    <div class="text-sm font-semibold text-white">Shorts / Reels Video Package (5 Videos)</div>
+                                    <div class="text-xs text-gray-400">Full post-production with subtitles & effects</div>
+                                </div>
+                            </div>
+                            <span class="text-sm font-bold text-brand-400">~20,000 DZD</span>
+                        </label>
+
+                        <label class="flex items-center justify-between p-4 rounded-xl border border-gray-800 hover:border-brand-500/40 cursor-pointer transition-all bg-darkBg/50">
+                            <div class="flex items-center gap-3">
+                                <input type="checkbox" data-price="25000" class="w-5 h-5 accent-brand-500 rounded cursor-pointer calc-checkbox">
+                                <div>
+                                    <div class="text-sm font-semibold text-white">Local Office Network & Server Setup</div>
+                                    <div class="text-xs text-gray-400">Multi-pc database linkage & network cabling</div>
+                                </div>
+                            </div>
+                            <span class="text-sm font-bold text-brand-400">~25,000 DZD</span>
+                        </label>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div>
+                            <span class="text-xs text-gray-400 block">Total Estimated Cost:</span>
+                            <span id="calcTotal" class="text-3xl font-extrabold text-white gradient-text">0 DZD</span>
+                        </div>
+                        <a href="#contact" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-brand-500 text-darkBg font-bold text-sm hover:bg-brand-400 transition-colors text-center">
+                            Request This Package
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="py-24 bg-darkBg relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <span class="text-xs uppercase font-bold tracking-widest text-brand-400">Get In Touch</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Let's Build Your Project</h2>
+                        <p class="text-gray-400 mt-4 leading-relaxed text-sm">
+                            Have a business system to program, a computer that needs repair, or social media content to produce? Reach out directly via message or use the form.
+                        </p>
+
+                        <div class="mt-8 space-y-4">
+                            <!-- Facebook Direct Link -->
+                            <a href="https://facebook.com" target="_blank" class="flex items-center gap-4 p-4 rounded-xl bg-darkCard border border-gray-800 hover:border-brand-500/40 transition-all group">
+                                <div class="w-12 h-12 rounded-lg bg-blue-600/20 flex items-center justify-center text-blue-400 text-xl group-hover:scale-110 transition-transform">
+                                    <i class="fa-brands fa-facebook-f"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-gray-400">Facebook Page</div>
+                                    <div class="text-sm font-bold text-white group-hover:text-brand-400 transition-colors">Khalouia Tech</div>
+                                </div>
+                            </a>
+
+                            <!-- Email Copy Item -->
+                            <div class="flex items-center justify-between p-4 rounded-xl bg-darkCard border border-gray-800">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-lg bg-brand-500/20 flex items-center justify-center text-brand-400 text-xl">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-gray-400">Direct Email</div>
+                                        <div class="text-sm font-bold text-white" id="emailText">contact@khalouiatech.dz</div>
+                                    </div>
+                                </div>
+                                <button onclick="copyEmail()" class="px-3 py-1.5 rounded bg-gray-800 text-xs text-gray-300 hover:text-white hover:bg-gray-700 transition-colors">
+                                    <i class="fa-regular fa-copy mr-1"></i> Copy
+                                </button>
+                            </div>
+
+                            <!-- Location Badge -->
+                            <div class="flex items-center gap-4 p-4 rounded-xl bg-darkCard border border-gray-800">
+                                <div class="w-12 h-12 rounded-lg bg-red-500/20 flex items-center justify-center text-red-400 text-xl">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-gray-400">Base Location</div>
+                                    <div class="text-sm font-bold text-white">Algeria (Remote & On-Site)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="bg-darkCard p-8 rounded-2xl border border-gray-800">
+                        <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-400 mb-1">Your Name</label>
+                                <input type="text" name="name" required placeholder="Full Name" class="w-full px-4 py-3 rounded-lg bg-darkBg border border-gray-800 text-white text-sm focus:outline-none focus:border-brand-500 transition-colors">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-400 mb-1">Service Needed</label>
+                                <select name="service" class="w-full px-4 py-3 rounded-lg bg-darkBg border border-gray-800 text-white text-sm focus:outline-none focus:border-brand-500 transition-colors">
+                                    <option>Database / Stock System</option>
+                                    <option>Computer Diagnostic / Assembly</option>
+                                    <option>Reels / Shorts Video Editing</option>
+                                    <option>Local Network / Server Setup</option>
+                                    <option>Other Inquiry</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-400 mb-1">Message Detail</label>
+                                <textarea name="message" rows="4" required placeholder="Describe what you need built or fixed..." class="w-full px-4 py-3 rounded-lg bg-darkBg border border-gray-800 text-white text-sm focus:outline-none focus:border-brand-500 transition-colors"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl bg-brand-500 text-darkBg font-bold text-sm hover:bg-brand-400 transition-colors shadow-lg shadow-brand-500/20">
+                                Send Message
+                            </button>
+                        </form>
+
+                        <!-- Success Message Banner -->
+                        <div id="formSuccess" class="hidden mt-4 p-4 rounded-xl bg-green-500/20 border border-green-500/40 text-green-400 text-xs text-center">
+                            <i class="fa-solid fa-circle-check mr-1"></i> Message sent successfully! We will get back to you soon.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-darkBg border-t border-gray-800 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <span class="text-sm font-bold text-white">Khalouia <span class="text-brand-400">Tech</span></span>
+                <span class="text-xs text-gray-500">© 2026. All rights reserved.</span>
+            </div>
+            <div class="text-xs text-gray-400">
+                Driven by Technical Excellence & Self-Reliance.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Portfolio Filtering
+        const filterBtns = document.querySelectorAll('#portfolioTabs .tab-btn');
+        const items = document.querySelectorAll('#portfolioGrid .portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Style Active Tab
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-brand-500', 'text-darkBg');
+                    b.classList.add('bg-darkCard', 'text-gray-400');
+                });
+                btn.classList.remove('bg-darkCard', 'text-gray-400');
+                btn.classList.add('bg-brand-500', 'text-darkBg');
+
+                const filter = btn.getAttribute('data-filter');
+                items.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Interactive Price Estimator Calculator
+        const checkboxes = document.querySelectorAll('.calc-checkbox');
+        const totalDisplay = document.getElementById('calcTotal');
+
+        checkboxes.forEach(box => {
+            box.addEventListener('change', calculateTotal);
+        });
+
+        function calculateTotal() {
+            let total = 0;
+            checkboxes.forEach(box => {
+                if (box.checked) {
+                    total += parseInt(box.getAttribute('data-price'));
+                }
+            });
+            totalDisplay.textContent = total.toLocaleString() + ' DZD';
+        }
+
+        // Copy Email helper function
+        function copyEmail() {
+            const email = document.getElementById('emailText').innerText;
+            const tempInput = document.createElement('input');
+            tempInput.value = email;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            
+            alert('Email address copied to clipboard!');
+        }
+
+        // Contact Form Submission Handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const name = form.elements.name.value.trim();
+            const service = form.elements.service.value;
+            const message = form.elements.message.value.trim();
+            const email = document.getElementById('emailText').innerText.trim();
+
+            const subject = encodeURIComponent(`New project inquiry from ${name} — ${service}`);
+            const body = encodeURIComponent(
+                `Name: ${name}\nService: ${service}\n\n${message}`
+            );
+
+            // Static hosting cannot process forms server-side, so hand off to the
+            // visitor's email client. Swap this for a Formspree/Web3Forms endpoint
+            // if you want in-page submissions.
+            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+
+            const successBanner = document.getElementById('formSuccess');
+            successBanner.classList.remove('hidden');
+            form.reset();
+            setTimeout(() => {
+                successBanner.classList.add('hidden');
+            }, 6000);
+        }
+    </script>
+</body>
+</html>
