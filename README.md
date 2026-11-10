@@ -44,14 +44,17 @@ Each key is the exact English sentence shown on the page.
 
 ## Contact form
 
-GitHub Pages is static, so the form cannot send email by itself. It currently opens the
-visitor's email client with the message pre-filled (`mailto:`).
+The form delivers messages straight to **faroukboudali07@gmail.com** through
+[FormSubmit](https://formsubmit.co) — no account or server needed.
 
-To get in-page submissions, create a free form endpoint and replace the `mailto:` line in
-`handleFormSubmit()` in `index.html`:
+**First-time activation:** the first submission triggers a confirmation email from
+FormSubmit. Open it and click the activation link once; after that, every message
+arrives in the inbox automatically.
 
-- [Formspree](https://formspree.io) — `https://formspree.io/f/<your-id>`
-- [Web3Forms](https://web3forms.com) — `https://api.web3forms.com/submit`
+If you ever change the address, replace it in two places:
+
+1. The form `action` URL and the `fetch(...)` URL in `index.html`
+2. The displayed `id="emailText"` value
 
 ## Custom domain
 
