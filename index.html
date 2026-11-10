@@ -542,11 +542,8 @@
 
                     <!-- Contact Form -->
                     <div class="bg-darkCard p-8 rounded-2xl border border-gray-800">
-                        <form id="contactForm" action="https://formsubmit.co/faroukboudali07@gmail.com" method="POST" onsubmit="handleFormSubmit(event)" class="space-y-4">
-                            <input type="hidden" name="_subject" value="New project inquiry from the Khalouia Tech website">
-                            <input type="hidden" name="_template" value="table">
-                            <input type="hidden" name="_captcha" value="false">
-                            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                        <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
                             <div>
                                 <label class="block text-xs font-semibold text-gray-400 mb-1">Your Name</label>
                                 <input type="text" name="name" required placeholder="Full Name" class="w-full px-4 py-3 rounded-lg bg-darkBg border border-gray-800 text-white text-sm focus:outline-none focus:border-brand-500 transition-colors">
@@ -651,10 +648,22 @@
             alert(window.ktT ? window.ktT('Email address copied to clipboard!') : 'Email address copied to clipboard!');
         }
 
-        // Contact Form Submission Handler — delivers messages straight to email via FormSubmit
+        // Telegram delivery settings (bot: @KhalouiaTechBot)
+        const TELEGRAM_BOT_TOKEN = '9018470985:AAHfNpO6IIXeGrp1OfrnhBmKwvUpCnedEz8';
+        const TELEGRAM_CHAT_ID = '5598477143';
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+        }
+
+        // Contact Form Submission Handler — delivers requests to Telegram
         function handleFormSubmit(event) {
             event.preventDefault();
             const form = event.target;
+            if (form.elements.website && form.elements.website.value) return; // honeypot
             const name = form.elements.name.value.trim();
             const service = form.elements.service.value;
             const message = form.elements.message.value.trim();
@@ -669,17 +678,20 @@
             const originalLabel = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>' + t('Sending...');
 
-            fetch('https://formsubmit.co/ajax/faroukboudali07@gmail.com', {
+            const text =
+                '<b>New project request</b>\n\n' +
+                '<b>Name:</b> ' + escapeHtml(name) + '\n' +
+                '<b>Service:</b> ' + escapeHtml(service) + '\n\n' +
+                escapeHtml(message);
+
+            fetch('https://api.telegram.org/bot' + TELEGRAM_BOT_TOKEN + '/sendMessage', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    name: name,
-                    service: service,
-                    message: message,
-                    _subject: 'New project inquiry from ' + name + ' — ' + service,
-                    _template: 'table',
-                    _captcha: 'false',
-                    _honey: ''
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: text,
+                    parse_mode: 'HTML',
+                    disable_web_page_preview: true
                 })
             })
                 .then(function (response) {
@@ -687,9 +699,7 @@
                     return response.json();
                 })
                 .then(function (data) {
-                    if (String(data.success) !== 'true') {
-                        throw new Error(data.message || 'Request failed');
-                    }
+                    if (!data.ok) throw new Error(data.description || 'Request failed');
                     successBanner.classList.remove('hidden');
                     form.reset();
                     setTimeout(function () { successBanner.classList.add('hidden'); }, 8000);
