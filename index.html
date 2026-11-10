@@ -686,7 +686,10 @@
                     if (!response.ok) throw new Error('Request failed');
                     return response.json();
                 })
-                .then(function () {
+                .then(function (data) {
+                    if (String(data.success) !== 'true') {
+                        throw new Error(data.message || 'Request failed');
+                    }
                     successBanner.classList.remove('hidden');
                     form.reset();
                     setTimeout(function () { successBanner.classList.add('hidden'); }, 8000);
